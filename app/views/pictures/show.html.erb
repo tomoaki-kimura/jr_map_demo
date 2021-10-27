@@ -39,28 +39,15 @@
 <%= link_to 'Back', pictures_path, class: "btn btn-sm btn-secondary" %>
 
 <script>
-    document.addEventListener('turbolinks:load', () => {
-        var map = L.map('map').setView([<%= @picture.latitude %>, <%= @picture.longitude %>], 13);
-        L.tileLayer(
-            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-            }).addTo(map);
-        L.marker(
-            [<%= @picture.latitude %>, <%= @picture.longitude %>],
-            {title: "marker-title"}
-        ).addTo(map)
-            .bindPopup("<h3><%= @picture.title %></h3><div><%= @picture.memo %></div>")
-            .openPopup();
-
-        const mapList = document.getElementById('map-list');
-
-        mapList.addEventListener('click', (e) => {
-            const targetForm = document.getElementById('select-form');
-            const targetIndex = e.target.parentNode.getAttribute('id').replace('place-id-', '');
-            console.log(targetIndex);
-            targetForm['index'].value = targetIndex;
-            console.log(targetForm['index'].value);
-            targetForm.submit();
-        });
-    })
+    var map = L.map('map').setView([<%= @picture.latitude %>, <%= @picture.longitude %>], 13);
+    L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+        }).addTo(map);
+    L.marker(
+        [<%= @picture.latitude %>, <%= @picture.longitude %>],
+        {title: "marker-title"}
+    ).addTo(map)
+        .bindPopup("<h3><%= @picture.title %></h3><div><%= @picture.memo %></div>")
+        .openPopup();
 </script>

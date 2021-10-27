@@ -8,6 +8,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1 or /pictures/1.json
   def show
+    sleep 1
   end
 
   # GET /pictures/new
@@ -25,7 +26,8 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to @picture, notice: "Picture was successfully created." }
+        sleep 1
+        format.html { redirect_to @picture, notice: "Picture was successfully created.", turbolinks: "false" }
         format.json { render :show, status: :created, location: @picture }
       else
         format.html { render :new, status: :unprocessable_entity }
