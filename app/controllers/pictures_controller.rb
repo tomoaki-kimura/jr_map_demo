@@ -8,7 +8,6 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1 or /pictures/1.json
   def show
-    sleep 1
   end
 
   # GET /pictures/new
