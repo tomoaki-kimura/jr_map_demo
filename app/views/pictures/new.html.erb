@@ -1,0 +1,10 @@
+<div class="text-center">
+  <h1>New Picture</h1>
+</div>
+
+<%= render 'form', picture: @picture %>
+
+<% content_for :back do %>
+  <%= link_to 'Back', pictures_path %>
+<% end %>
+

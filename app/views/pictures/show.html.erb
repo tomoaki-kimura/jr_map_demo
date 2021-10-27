@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table table-borderd">
+  <div class="tbody">
+    <tr>
+      <th>Title</th>
+      <td><%= @picture.title %></td>
+    </tr>
+    <tr>
+      <th>Latitude</th>
+      <td><%= @picture.latitude %></td>
+    </tr>
+    <tr>
+      <th>Longitude</th>
+      <td><%= @picture.longitude %></td>
+    </tr>
+    <tr>
+      <th>Memo</th>
+      <td><%= @picture.memo %></td>
+    </tr>
+    <tr>
+      <th>Picture</th>
+      <td>
+        <% if @picture.picture.attached? %>
+          <%= image_tag @picture.picture.variant(resize: "300x300") %>
+        <% end %>
+      </td>
+    </tr>
+  </div>
+</table>
+
+<p>
+  <strong>Title:</strong>
+  <%= @picture.title %>
+</p>
+
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back', pictures_path %>
