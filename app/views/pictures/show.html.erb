@@ -48,6 +48,6 @@
         [<%= @picture.latitude %>, <%= @picture.longitude %>],
         {title: "marker-title"}
     ).addTo(map)
-        .bindPopup("<h3><%= @picture.title %></h3><div><%= @picture.memo %></div>")
+        .bindPopup("<%= @picture.title %>")
         .openPopup();
 </script>
