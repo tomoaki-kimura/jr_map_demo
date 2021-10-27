@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Picture</h1>
+
 <table class="table table-borderd">
   <div class="tbody">
     <tr>
@@ -26,13 +28,37 @@
         <% end %>
       </td>
     </tr>
+    <tr>
+      <th>Map</th>
+      <td><div id="map" style="width: 100%; height: 500px;"></div></td>
+    </tr>
   </div>
 </table>
 
-<p>
-  <strong>Title:</strong>
-  <%= @picture.title %>
-</p>
+<%= link_to 'Edit', edit_picture_path(@picture), class: "btn btn-sm btn-success" %>
+<%= link_to 'Back', pictures_path, class: "btn btn-sm btn-secondary" %>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+<script>
+  var map = L.map('map').setView([<%= @picture.latitude %>, <%= @picture.longitude %>], 13);
+  L.tileLayer(
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+    }).addTo(map);
+  L.marker(
+    [<%= @picture.latitude %>, <%= @picture.longitude %>],
+    { title: "marker-title" }
+  ).addTo(map)
+    .bindPopup("<h3><%= @picture.title %></h3><div><%= @picture.memo %></div>")
+    .openPopup();
+
+  const mapList = document.getElementById('map-list');
+
+  mapList.addEventListener('click', (e) => {
+    const targetForm = document.getElementById('select-form');
+    const targetIndex = e.target.parentNode.getAttribute('id').replace('place-id-', '');
+    console.log(targetIndex);
+    targetForm['index'].value = targetIndex;
+    console.log(targetForm['index'].value);
+    targetForm.submit();
+  });
+</script>

@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(version: 2021_10_27_051144) do
   end
 
   create_table "pictures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "latitude"
-    t.string "longitude"
     t.string "memo"
     t.string "title"
     t.datetime "created_at", precision: 6, null: false

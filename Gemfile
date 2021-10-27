@@ -59,7 +59,7 @@ group :production do
 end
 
 gem 'faraday'
-
+gem 'exifr'
 
 
 
